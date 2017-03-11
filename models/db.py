@@ -60,6 +60,8 @@ class TortillaEntity(object):
         return self.body
 
     def post(self, *args, **kwargs):
+        kwargs['params'] = self._get_auth()
+        kwargs['format'] = ('json', None)
         self.body = self.request.post(*args, **kwargs)
         return self.body
 
