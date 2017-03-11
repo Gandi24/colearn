@@ -15,7 +15,7 @@ def hello_world():
 @app.route('/room/<int:room_id>')
 def single_room_view(room_id):
     context = {
-        'room': SingleRoom(room_id).get()
+        'room': SingleRoom(1).get()
     }
 
     return render_template('room.html', **context)

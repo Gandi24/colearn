@@ -120,9 +120,13 @@ class SingleRoom(Index):
     room_id = Param('room_id')
     path = [
         'room',
-        room_id,
-        '.json'
+        'id',
+        room_id
     ]
-    def __init__(self, room_id, kwargs):
+
+    def _get_url(self):
+        return super()._get_url() + '.json'
+
+    def __init__(self, room_id):
         self.room_id.value = room_id
-        super(SingleRoom, self).__init__(**kwargs)
+        super(SingleRoom, self).__init__()

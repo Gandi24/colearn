@@ -38,10 +38,20 @@ header {
 
 .categories {
     padding: 10px 40px;
-    display: inline-flex;
-    // justify-content: space-between;
-    max-width: 50%;
-    ul li {
-        list-style-type: none;
+    display: inline-block;
+    max-width: 44%;
+    margin: auto;
+    vertical-align: top;
+
+    & > span {
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+
+    ul {
+        padding: 0;
+        li {
+            list-style-type: none;
+        }
     }
 }
