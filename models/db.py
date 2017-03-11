@@ -1,3 +1,5 @@
+from os import environ
+
 from flask import Flask
 import tortilla
 
@@ -8,7 +10,11 @@ from tortilla import formats
 from models.formatters import setup_format_str
 
 app = Flask(__name__)
-app.config.from_pyfile('../config.py')
+try:
+    app.config.from_pyfile('../config.py')
+except FileNotFoundError:
+    app.config.setdefault('DATABASE_URI', environ.get('DATABASE_URI'))
+    app.config.setdefault('API_KEY', environ.get('API_KEY'))
 
 
 class TortillaEntity(object):
