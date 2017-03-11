@@ -114,3 +114,15 @@ class Categories(Index):
 
     def get_with_rooms(self):
         return self.get(params={'depth': 1})
+
+
+class SingleRoom(Index):
+    room_id = Param('room_id')
+    path = [
+        'room',
+        room_id,
+        '.json'
+    ]
+    def __init__(self, room_id, kwargs):
+        self.room_id.value = room_id
+        super(SingleRoom, self).__init__(**kwargs)
