@@ -1,11 +1,16 @@
-from flask import Flask
+from flask import render_template, Flask
+
+from models.db import Rooms
 
 app = Flask(__name__)
-
+app.config.from_pyfile('config.py')
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    context = {
+        'rooms': Rooms().get()
+    }
+    return render_template('index.html', **context)
 
 
 if __name__ == '__main__':

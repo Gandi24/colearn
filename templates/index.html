@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block body %}
+  CoLearn
+  <ul>
+    {% for room in rooms %}
+      <li>Room {{ room.name }}: {{ room.url }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
