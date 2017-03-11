@@ -4,13 +4,13 @@
 
   <h1>CoLearn - nauczmy się razem</h1>
   <h2>CoLearn to platforma do wspólnej nauki. W podzielonych na kategorie pokojach porozmawiasz na tematy dotyczące
-  przedmiotów szkolnych, zadań domowych oraz wszelkich zagadnień, które związane są z Toją szkołą. Jeżeli nie widzisz
+  przedmiotów szkolnych, zadań domowych oraz wszelkich zagadnień, które związane są z Twoją szkołą. Jeżeli nie widzisz
   pasującego Ci tematu, załóż nowy i zaczekaj, aż ktoś do Ciebie dołączy.</h2>
 
   {% for category in categories %}
     <div class="categories">
         <b>{{ category.name }}
-            <a onclick="openModal('{{ category.name }}')"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            <a data-toggle="modal" data-target="#roomPopup" onclick="addRoom({{ category.id }}, '{{ category.name }}')"><i class="fa fa-plus" aria-hidden="true"></i></a>
         </b>
         <ul>
           {% for room in category.room %}
@@ -22,7 +22,11 @@
     </div>
   {% endfor %}
   </div>
+
+{% if error %}
+  {% include 'create_room_error.html' %}
+{% endif %}
+
 {% endblock %}
 
 {% include 'create_room.html' %}
-

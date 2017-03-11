@@ -1,4 +1,7 @@
 import json
+
+import requests
+from flask import redirect
 from flask import render_template, Flask, request
 
 from models.db import Categories, SingleRoom, Rooms
@@ -7,9 +10,11 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
 @app.route('/')
-def room_index_view():
+def room_index_view(*args, **kwargs):
+    error = request.args.get('error')
     context = {
-        'categories': Categories().get_with_rooms()
+        'categories': Categories().get_with_rooms(),
+        'error': error == 'true'
     }
     return render_template('index.html', **context)
 
@@ -17,7 +22,7 @@ def room_index_view():
 @app.route('/room/<int:room_id>')
 def single_room_view(room_id):
     context = {
-        'room': SingleRoom(room_id).get()
+        'room': SingleRoom(room_id).get(params={"depth": 1})
     }
 
     return render_template('room.html', **context)
@@ -25,21 +30,19 @@ def single_room_view(room_id):
 
 @app.route('/create_room', methods=['GET', 'POST'])
 def create_room_view():
-    if request.method == 'GET':
-        context = {
-            'categories': Categories().get()
-        }
-        print(context)
-        return render_template('create_room.html', **context)
-
     if request.method == 'POST':
         body = {
             'name': request.form['room_name'],
             'url': 'http://appear.in/' + request.form['room_name'],
             'category_id': request.form['category']
         }
-        Rooms().post(data=body)
-        return 'ok'
+        try:
+            data = Rooms().post(data=body)
+        except requests.exceptions.HTTPError:
+            return redirect("/?error=true", code=302)
+        else:
+            room_id = data.split('/')[-1]
+            return redirect("/room/%s" % room_id, code=302)
 
 
 if __name__ == '__main__':

@@ -8,6 +8,7 @@
 @blindGrey: rgba(173, 163, 163, 0.16);
 @mainTheme: rgb(20, 39, 22);
 @red: #af0606;
+@blue: #2196f3;
 @pink: #e234ad;
 
 //////  reset
@@ -52,6 +53,22 @@ header {
     box-shadow: 2px 2px 4px @blindGrey;
     font-family: 'Architects Daughter', cursive;
     // text-shadow: 1px 1px 1px dimgrey;
+
+    .btnBack {
+        font-family: 'Open Sans', sans-serif;
+        position: absolute;
+        left: 20px;
+        font-size: 20px;
+        color: @white;
+    }
+    .categoryLabel {
+        font-family: 'Open Sans', sans-serif;
+        position: absolute;
+        right: 20px;
+        font-size: 20px;
+        color: @white;
+        top: 0;
+    }
 }
 
 .container {
@@ -85,16 +102,18 @@ header {
         background: rgba(130, 173, 175, 0.15);
         border-radius: 5px;
         padding: 8px 12px;
-        font-weight: normal;
+        font-weight: bold;
         text-align: center;
         margin: auto;
         display: block;
-        font-size: 18px;
+        font-size: 20px;
         position: relative;
         transition: all 0.05s ease-in-out;
+        color: #337ab7;
+
 
         &:hover {
-            color: @pink;
+            // color: @pink;
             opacity: 0.5;
         }
 
@@ -108,11 +127,15 @@ header {
 
     ul {
         border-left: 2px solid @pink;
-        padding: 0;
+        padding: 0 0 0 20px;
+        margin-top: 10px;
         text-align: left;
-        padding-left: 20px;
+        margin-left: 10px;
+
         li {
             list-style-type: none;
+            line-height: 26px;
+            font-size: 18px;
              a {
                  color: @baseGrey;
              }
@@ -127,7 +150,8 @@ header {
     height: 100%;
 }
 
-.roomPopup {
+.roomPopup,
+#roomErrorPopup {
     z-index: 14;
     background: rgba(8, 8, 8, 0.63);
     position: absolute;
@@ -137,14 +161,15 @@ header {
     left: 0;
     padding: 20px 40px;
     box-sizing: border-box;
-    display: none;
+    // display: none;
 }
 .popupBody {
     position: absolute;
     top: 20%;
-    left: 15%;
-    width: 70%;
-    height: 40%;
+    left: 50%;
+    margin-left: -220px;
+    height: 220px;
+    width: 440px;
     box-shadow: 1px 1px 1px @blindGrey;
     z-index: 12;
     border-radius: 5px;
@@ -152,8 +177,40 @@ header {
     padding: 30px;
     box-sizing: border-box;
 
+    h1 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    select {
+        visibility: hidden;
+    }
+
     label {
         display: block;
+        font-size: 16px;
+        line-height: 30px;
+        margin: 20px 0;
+    }
+    input[type="submit"] {
+        padding: 6px 22px;
+        min-width: 120px;
+        background: @blue;;
+        border: none;
+        color: @white;
+        margin: auto;
+        display: block;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .close {
+        font-size: 24px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: @blue;
     }
 }
 
@@ -166,4 +223,13 @@ footer {
     background: #555;
     color: #efefef;
     padding: 4px 20px;
+}
+
+.alert {
+        font-size: 18px;
+}
+
+.modal-backdrop.in {
+    opacity: 0;
+    pointer-events: none;
 }

@@ -1,4 +1,13 @@
 {% extends "base.html" %}
+
+{% block header %}
+  <a class="btnBack" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+</a>
+  <div class="categoryLabel"> {{ room.category.name }} - {{ room.name }}</div>
+
+{% endblock %}
+
+
 {% block body %}
   <iframe class="roomFrame" width="100" src="https://appear.in/{{ room.name }}" frameborder="0"></iframe>
 {% endblock %}
