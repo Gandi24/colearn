@@ -8,11 +8,8 @@ from os import environ
 from models.db import Categories, SingleRoom, Rooms
 
 app = Flask(__name__)
-try:
-    app.config.from_pyfile('config.py')
-except FileNotFoundError:
-    app.config.setdefault('DATABASE_URI', environ.get('DATABASE_URI'))
-    app.config.setdefault('API_KEY', environ.get('API_KEY'))
+app.config.setdefault('DATABASE_URI', environ.get('DATABASE_URI'))
+app.config.setdefault('API_KEY', environ.get('API_KEY'))
 
 @app.route('/')
 def room_index_view(*args, **kwargs):
