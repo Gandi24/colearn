@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from formats import FormatBank, default_bank
 
+
 def discover_str(bank=None, **meta):
     if bank is None:
         bank = default_bank
