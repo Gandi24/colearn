@@ -1,6 +1,6 @@
 from flask import render_template, Flask
 
-from models.db import Rooms
+from models.db import Categories
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -8,7 +8,7 @@ app.config.from_pyfile('config.py')
 @app.route('/')
 def hello_world():
     context = {
-        'rooms': Rooms().get()
+        'categories': Categories().get_with_rooms()
     }
     return render_template('index.html', **context)
 

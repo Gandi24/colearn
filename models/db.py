@@ -75,3 +75,12 @@ class Rooms(Index):
     path = [
         "room.json"
     ]
+
+
+class Categories(Index):
+    path = [
+        'category.json'
+    ]
+
+    def get_with_rooms(self):
+        return self.get(params={'depth': 1})

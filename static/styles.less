@@ -1,0 +1,32 @@
+// out: styles.css, sourcemap: false, compress: true
+
+////  variables
+
+@lightGrey: #d6d6d6;
+@white: #fff;
+@baseGrey: #555;
+@blindGrey: rgba(173, 163, 163, 0.16);
+@mainTheme: #009688;
+
+//////  reset
+html, body, h1, h2, p, div, span {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    color: @baseGrey;
+    font-family: 'Open Sans', sans-serif;
+}
+
+//// header
+header {
+    background: @mainTheme;
+    color: @white;
+    height: 80px;
+    font-size: 18px;
+    line-height: 80px;
+    border-bottom: 1px solid @lightGrey;
+    text-align: center;
+    box-shadow: 2px 2px 4px @blindGrey;
+}
