@@ -1,13 +1,25 @@
 {% extends "base.html" %}
 {% block body %}
+<div class="container">
+
+  <h1>CoLearn - nauczmy się razem</h1>
+  <h2>CoLearn to platforma do wspólnej nauki. W podzielonych na kategorie pokojach porozmawiasz na tematy dotyczące
+  przedmiotów szkolnych, zadań domowych oraz wszelkich zagadnień, które związane są z Toją szkołą. Jeżeli nie widzisz
+  pasującego Ci tematu, załóż nowy i zaczekaj, aż ktoś do Ciebie dołączy.</h2>
+
   {% for category in categories %}
     <div class="categories">
-        <span>{{ category.name }}<span>
+        <b>{{ category.name }} <i class="fa fa-plus" aria-hidden="true"></i></b>
         <ul>
           {% for room in category.room %}
-            <li><a href="/room/{{ room.id }}">{{ room.name }}</a></li>
+            <li>
+                <a href="/room/{{ room.id }}">{{ room.name }}</a>
+            </li>
           {% endfor %}
         </ul>
     </div>
   {% endfor %}
+  </div>
 {% endblock %}
+
+{% include 'create_room.html' %}

@@ -3,6 +3,9 @@ import tortilla
 
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3 import Retry
+from tortilla import formats
+
+from models.formatters import setup_format_str
 
 app = Flask(__name__)
 app.config.from_pyfile('../config.py')
@@ -10,6 +13,7 @@ app.config.from_pyfile('../config.py')
 
 class TortillaEntity(object):
     base_url = None
+    suffix = None
 
     def __init__(self, **kwargs):
         self.url = self._get_url()
@@ -22,7 +26,10 @@ class TortillaEntity(object):
         if not self.base_url:
             raise NotImplementedError("Make sure to assign base_url first")
         path_list = [self.base_url.strip("/")] + self._get_path()
-        return "/".join([self._get_path_value(path) for path in path_list])
+        path = "/".join([self._get_path_value(path) for path in path_list])
+        if self.suffix:
+            path += self.suffix
+        return path
 
     def _get_path(self):
         path = []
@@ -61,7 +68,8 @@ class TortillaEntity(object):
 
     def post(self, *args, **kwargs):
         kwargs['params'] = self._get_auth()
-        kwargs['format'] = ('json', None)
+        setup_format_str(formats=formats)
+        kwargs['format'] = ('json', 'str')
         self.body = self.request.post(*args, **kwargs)
         return self.body
 
@@ -126,8 +134,7 @@ class SingleRoom(Index):
         room_id
     ]
 
-    def _get_url(self):
-        return super()._get_url() + '.json'
+    suffix = '.json'
 
     def __init__(self, room_id):
         self.room_id.value = room_id

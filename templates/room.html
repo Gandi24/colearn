@@ -1,6 +1,4 @@
 {% extends "base.html" %}
 {% block body %}
-    <div>
-        <iframe src="https://appear.in/{{ room.name }}" width=700" height="600" frameborder="0"></iframe>
-    </div>
+  <iframe class="roomFrame" width="100" src="https://appear.in/{{ room.name }}" frameborder="0"></iframe>
 {% endblock %}

@@ -6,7 +6,8 @@
 @white: #fff;
 @baseGrey: #555;
 @blindGrey: rgba(173, 163, 163, 0.16);
-@mainTheme: #009688;
+@mainTheme: rgb(20, 39, 22);
+@red: #af0606;
 
 //////  reset
 html, body, h1, h2, p, div, span {
@@ -15,11 +16,25 @@ html, body, h1, h2, p, div, span {
 }
 
 body {
+    box-sizing: border-box;
     color: @baseGrey;
     padding-top: 80px;
     font-family: 'Open Sans', sans-serif;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    bottom: 0;
+    top: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #baseGrey;
+}
 //// header
 header {
     position: fixed;
@@ -29,29 +44,90 @@ header {
     background: @mainTheme;
     color: @white;
     height: 80px;
-    font-size: 18px;
+    font-size: 42px;
     line-height: 80px;
-    border-bottom: 1px solid @lightGrey;
+    // border-bottom: 1px solid @lightGrey;
     text-align: center;
     box-shadow: 2px 2px 4px @blindGrey;
+    font-family: 'Architects Daughter', cursive;
+    // text-shadow: 1px 1px 1px dimgrey;
+}
+
+.container {
+        padding-top: 40px;
+
+        h1 {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 16px;
+            text-align: center;
+            max-width: 600px;
+            margin: 30px auto 40px;
+        }
 }
 
 .categories {
-    padding: 10px 40px;
+    box-sizing: border-box;
     display: inline-block;
-    max-width: 44%;
+    width: 48%;
     margin: auto;
     vertical-align: top;
+    background: rgba(130, 173, 175, 0.15);
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-bottom: 20px;
 
-    & > span {
+    b {
         text-transform: capitalize;
-        font-weight: bold;
+        font-weight: normal;
+        text-align: center;
+        margin: auto;
+        display: block;
+        font-size: 18px;
+        position: relative;
+        transition: all 0.05s ease-in-out;
+
+        &:hover {
+            color: @red;
+        }
+
+        i {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            cursor: pinter;
+        }
     }
 
     ul {
         padding: 0;
+        text-align: left;
         li {
             list-style-type: none;
+             a {
+                 color: @baseGrey;
+             }
         }
     }
+}
+
+/////  room
+
+.roomFrame {
+    width: 100%;
+    height: 100%;
+}
+
+/// footer
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #555;
+    color: #efefef;
+    padding: 4px 20px;
 }

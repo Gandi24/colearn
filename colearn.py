@@ -38,7 +38,6 @@ def create_room_view():
             'url': 'http://appear.in/' + request.form['room_name'],
             'category_id': request.form['category']
         }
-        print(body)
         Rooms().post(data=body)
         return 'ok'
 
