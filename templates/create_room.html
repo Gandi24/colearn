@@ -1,16 +1,18 @@
-<div>
-    <form method="post" action="/create_room">
+<div class="roomPopup" id="roomPopup">
+    <div class="popupBody">
+        <form method="post" action="/create_room">
 
-        <label>New Room Name
-            <input type="text" name="room_name">
-        </label>
-        <label>Room Category
-            <select name="category">
-                {% for category in categories%}
-                <option value="{{ category.id }}">{{ category.name }}</option>
-                {% endfor %}
-            </select>
-        </label>
-        <input type="submit" value="Create">
-    </form>
+            <label>New Room Name
+                <input type="text" name="room_name">
+            </label>
+            <label>Room Category
+                <select name="category">
+                    {% for category in categories%}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <input type="submit" value="Create">
+        </form>
+    </div>
 </div>

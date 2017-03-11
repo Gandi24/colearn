@@ -9,7 +9,9 @@
 
   {% for category in categories %}
     <div class="categories">
-        <b>{{ category.name }} <i class="fa fa-plus" aria-hidden="true"></i></b>
+        <b>{{ category.name }}
+            <a onclick="openModal('{{ category.name }}')"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        </b>
         <ul>
           {% for room in category.room %}
             <li>
@@ -23,3 +25,4 @@
 {% endblock %}
 
 {% include 'create_room.html' %}
+
