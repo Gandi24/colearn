@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block body %}
   {% for category in categories %}
-    {{ category.name }}
-    <ul>
-      {% for room in category.room %}
-        <li>{{ room.name }}: {{ room.url }}</li>
-      {% endfor %}
-    </ul>
+    <div class="categories">{{ category.name }}
+        <ul>
+          {% for room in category.room %}
+            <li>{{ room.name }}: {{ room.url }}</li>
+          {% endfor %}
+        </ul>
+    </div>
   {% endfor %}
 {% endblock %}

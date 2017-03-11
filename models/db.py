@@ -22,7 +22,7 @@ class TortillaEntity(object):
         if not self.base_url:
             raise NotImplementedError("Make sure to assign base_url first")
         path_list = [self.base_url.strip("/")] + self._get_path()
-        return "/".join(path_list)
+        return "/".join([self._get_path_value(path) for path in path_list])
 
     def _get_path(self):
         path = []
@@ -30,6 +30,14 @@ class TortillaEntity(object):
             if hasattr(base, "path"):
                 path.extend(base.path)
         return path
+
+    @staticmethod
+    def _get_path_value(path_item):
+        if not isinstance(path_item, Param):
+            return path_item
+        if path_item.value:
+            return str(path_item.value)
+        return path_item.get_format_str()
 
     def _get_auth(self):
         return {
@@ -58,6 +66,28 @@ class TortillaEntity(object):
     def __getattr__(self, item):
         if item == 'request':
             return self.api
+
+
+class Param(object):
+    _value = None
+
+    def __init__(self, name):
+        self.name = name
+        super(Param, self).__init__()
+
+    def get_format_str(self):
+        return "{%s}" % self.name
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, x):
+        self._value = x
+
+    def __cmp__(self, other):
+        return __cmp__(self._value, other)
 
 
 class DB(TortillaEntity):

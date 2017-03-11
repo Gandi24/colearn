@@ -16,11 +16,16 @@ html, body, h1, h2, p, div, span {
 
 body {
     color: @baseGrey;
+    padding-top: 80px;
     font-family: 'Open Sans', sans-serif;
 }
 
 //// header
 header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
     background: @mainTheme;
     color: @white;
     height: 80px;
@@ -29,4 +34,14 @@ header {
     border-bottom: 1px solid @lightGrey;
     text-align: center;
     box-shadow: 2px 2px 4px @blindGrey;
+}
+
+.categories {
+    padding: 10px 40px;
+    display: inline-flex;
+    // justify-content: space-between;
+    max-width: 50%;
+    ul li {
+        list-style-type: none;
+    }
 }
