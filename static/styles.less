@@ -5,10 +5,12 @@
 @lightGrey: #d6d6d6;
 @white: #fff;
 @baseGrey: #555;
+@mildGrey: #efefef;
 @blindGrey: rgba(173, 163, 163, 0.16);
 @mainTheme: rgb(20, 39, 22);
 @red: #af0606;
 @blue: #2196f3;
+@baseBlue: #337ab7;
 @pink: #e234ad;
 
 //////  reset
@@ -37,6 +39,7 @@ a {
     text-decoration: none;
     color: #baseGrey;
 }
+
 //// header
 header {
     position: fixed;
@@ -109,8 +112,7 @@ header {
         font-size: 20px;
         position: relative;
         transition: all 0.05s ease-in-out;
-        color: #337ab7;
-
+        color: @baseBlue;
 
         &:hover {
             // color: @pink;
@@ -163,6 +165,7 @@ header {
     box-sizing: border-box;
     // display: none;
 }
+
 .popupBody {
     position: absolute;
     top: 20%;
@@ -220,8 +223,8 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: #555;
-    color: #efefef;
+    background: @baseGrey;
+    color: @mildGrey;
     padding: 4px 20px;
 }
 
