@@ -3,24 +3,8 @@
 @import "less/colors.less";
 @import "less/reset.less";
 @import "less/header.less";
-
-.container {
-      padding-top: 40px;
-      max-width: 1024px;
-      margin: auto;
-
-      h1 {
-          font-size: 20px;
-          text-align: center;
-      }
-
-      h2 {
-          font-size: 16px;
-          text-align: center;
-          max-width: 600px;
-          margin: 30px auto 40px;
-      }
-}
+@import "less/base.less";
+@import "less/modal.less";
 
 .categories {
     box-sizing: border-box;
@@ -45,7 +29,6 @@
         color: @baseBlue;
 
         &:hover {
-            // color: @pink;
             opacity: 0.5;
         }
 
@@ -82,70 +65,7 @@
     height: 100%;
 }
 
-.roomPopup,
-#roomErrorPopup {
-    z-index: 14;
-    background: rgba(8, 8, 8, 0.63);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left: 0;
-    padding: 20px 40px;
-    box-sizing: border-box;
-    // display: none;
-}
 
-.popupBody {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    margin-left: -220px;
-    height: 220px;
-    width: 440px;
-    box-shadow: 1px 1px 1px @blindGrey;
-    z-index: 12;
-    border-radius: 5px;
-    background: @white;
-    padding: 30px;
-    box-sizing: border-box;
-
-    h1 {
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    select {
-        visibility: hidden;
-    }
-
-    label {
-        display: block;
-        font-size: 16px;
-        line-height: 30px;
-        margin: 20px 0;
-    }
-    input[type="submit"] {
-        padding: 6px 22px;
-        min-width: 120px;
-        background: @blue;;
-        border: none;
-        color: @white;
-        margin: auto;
-        display: block;
-        border-radius: 5px;
-        margin-top: 10px;
-        font-size: 16px;
-    }
-
-    .close {
-        font-size: 24px;
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        color: @blue;
-    }
-}
 
 /// footer
 
